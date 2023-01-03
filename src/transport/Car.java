@@ -12,9 +12,29 @@ public class Car {
     private String registrationNumber;
     private final int seats;
     private boolean summerTyre;
+    private Key key;
+
+    public static class Key {
+        private final boolean remoteStartEngine;
+        private final boolean nonKeyAccses;
+
+        public Key(boolean remoteStartEngine, boolean nonKeyAccses) {
+            this.remoteStartEngine = remoteStartEngine;
+            this.nonKeyAccses = nonKeyAccses;
+        }
+
+        public boolean isRemoteStartEngine() {
+            return remoteStartEngine;
+        }
+
+        public boolean isNonKeyAccses() {
+            return nonKeyAccses;
+        }
+    }
 
 
-    public Car(String brand, String model, int year, String country, String color, double engineVolume, String transmission, String typeCarcase, String registrationNumber, int seats, boolean summerTyre) {
+
+    public Car(String brand, String model, int year, String country, String color, double engineVolume, String transmission, String typeCarcase, String registrationNumber, int seats, boolean summerTyre, Key key) {
         if (brand == null || brand.equals("")) {
             brand = "default";
         }
@@ -64,8 +84,10 @@ public class Car {
             seats = 4;
         }
         this.seats = seats;
-
         this.summerTyre = summerTyre;
+        if (key == null) {
+            this.key = new Key(false, false);
+        }
 
     }
 
@@ -148,6 +170,9 @@ public class Car {
         }
         return true;
     }
+
+
+
 
 
 
