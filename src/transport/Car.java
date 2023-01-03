@@ -125,16 +125,14 @@ public class Car {
         this.registrationNumber = registrationNumber;
     }
 
-    public boolean isSummerTyre() {
-        return summerTyre;
+    public void setSummerTyre(boolean summerTyre) {
+        this.summerTyre = summerTyre;
     }
 
-    public void setSummerTyre(boolean seasonTire) {
-        this.summerTyre = seasonTire;
-    }
-
-    public void changeTyre() {
-        summerTyre = !summerTyre;
+    public void changeTyre(int month) {
+        if (month == 12 || (month > 0 && month <3)) {
+            summerTyre = !summerTyre;
+        }
     }
 
     public boolean isRegistrationNumber() {
@@ -164,6 +162,11 @@ public class Car {
                 ", color='" + color + '\'' +
                 ", year=" + year +
                 ", country='" + country + '\'' +
+                "transmission='" + transmission + '\'' +
+                ", typeCarcase='" + typeCarcase + '\'' +
+                "registrationNumber='" + registrationNumber + '\'' +
+                ", seats='" + seats + '\'' +
+                ", summerTyre='" + summerTyre + '\'' +
                 '}';
     }
 }

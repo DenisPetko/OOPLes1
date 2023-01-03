@@ -46,19 +46,20 @@ public class Main {
         cars[4].engineVolume = 1.7;*/
 
         Car[] cars = new Car[5];
-        cars[0] = new Car("", "Granta", 2015, "Россия", "жёлтый", 0, "механическая", "седан", "Р985УХ197", 4, false);
-        cars[1] = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германия", "черный", 3.0, "роботизированная", "седан", "Р985УХ197", 4, false);
-        cars[2] = new Car("BMW", null, 2021, "Германия", "черный", 3.0, "роботизированная", "купэ", "Р985УХ197", 2, false);
-        cars[3] = new Car("Kia", "Sportage", 2018, null, "красный", 2.4, "автоматическая", "кроссовер", "Р985УХ197", 5, false);
-        cars[4] = new Car("Hyundai", "Avante", -3, "Южная Корея", "", 1.6, "автоматическая", "седан", "Р985УХ197", 5, false);
+        cars[0] = new Car("Lada", "Granta", 2015, "Россия", "жёлтый", 0, "механическая", "седан", "Р985УХ197", 4, true);
+        cars[1] = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германия", "черный", 3.0, "роботизированная", "седан", "Р985УХ197", 4, true);
+        cars[2] = new Car("BMW", null, 2021, "Германия", "черный", 3.0, "роботизированная", "купэ", "Р985УХ197", 2, true);
+        cars[3] = new Car("Kia", "Sportage", 2018, null, "красный", 2.4, "автоматическая", "кроссовер", "Р985УХ197", 5, true);
+        cars[4] = new Car("Hyundai", "Avante", -3, "Южная Корея", "", 1.6, "автоматическая", "седан", "Р985УХ197", 5, true);
 
-        System.out.println(Arrays.toString(cars));
+        //System.out.println(Arrays.toString(cars));
         //или так
+        cars[1].changeTyre(1);
+        cars[0].setRegistrationNumber("А777АА777");
+        cars[0].setRegistrationNumber("А777АА7М7");
         for (Car car : cars) {
             System.out.println(car);
         }
-        private static void printCars(Car cars[]) {
-            System.out.println();
-        }
+
     }
 }
