@@ -1,3 +1,4 @@
+import transport.Bus;
 import transport.Car;
 
 import java.util.Arrays;
@@ -20,7 +21,14 @@ public class Main {
         }
 
         cars[0].printInfo();
-        cars[1].printInfo();
+
+        Bus bus = new Bus("Mersedes", "T100", 2016, "Германия", "белый", 110);
+        Bus bus1 = new Bus("Mersedes2", "T200", 2017, "Германия", "белый", 120);
+        Bus bus2 = new Bus("Mersedes3", "T300", 2018, "Германия", "белый", 130);
+
+        System.out.println(bus);
+        System.out.println(bus1);
+        System.out.println(bus2);
 
     }
 }
