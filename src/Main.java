@@ -1,34 +1,55 @@
 import transport.Bus;
 import transport.Car;
-
-import java.util.Arrays;
+import transport.Truck;
 
 public class Main {
     public static void main(String[] args) {
 
-        Car[] cars = new Car[5];
-        cars[0] = new Car("Lada", "Granta", 1.7, "желтый", 2015, "Россия", "механическая", "седан", "Р985УХ197", 4, true, new Car.Key(true, true));
-        cars[1] = new Car("Audi", "A8 50 L TDI quattro", 3.0, "черный", 2020, "Германия", "роботизированная", "седан", "Р985УХ197", 4, true, null);
-        cars[2] = new Car("BMW", null, 3.0, "черный", 2021, "Германия", "роботизированная", "купэ", "Р985УХ197", 2, true, null);
-        cars[3] = new Car("Kia", "Sportage", 2.4, "красный", 2018, "Южная Корея", "автоматическая", "кроссовер", "Р985УХ197", 5, false, null);
-        cars[4] = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея", "автоматическая", "седан", "Р985УХ197", 5, false, null);
+        Car car1 = new Car("FORD", "focus", 2.0);
+        Car car2 = new Car("BMW", "520", 3.0);
+        Car car3 = new Car("KIA", "Optima", 1.6);
+        Car car4 = new Car("Автомобиль4", "Модель4", 2.4);
 
-        cars[0].changeTyre(4);
-        cars[0].setRegistrationNumber("A777АА777");
-        System.out.println(cars[0].isRegistrationNumber());
-        for (Car car : cars) {
-            System.out.println(car);
-        }
+        Bus bus1 = new Bus("Автобус1", "Модель1", 4.0);
+        Bus bus2 = new Bus("Автобус2", "Модель2", 5.0);
+        Bus bus3 = new Bus("Автобус3", "Модель3", 6.0);
+        Bus bus4 = new Bus("Автобус4", "Модель4", 6.0);
 
-        cars[0].printInfo();
+        Truck truck1 = new Truck("Грузовик1", "Модель1", 5.0);
+        Truck truck2 = new Truck("Грузовик2", "Модель2", 6.0);
+        Truck truck3 = new Truck("Грузовик3", "Модель3", 8.0);
+        Truck truck4 = new Truck("Грузовик4", "Модель4", 8.0);
 
-        Bus bus = new Bus("Mersedes", "T100", 2016, "Германия", "белый", 110);
-        Bus bus1 = new Bus("Mersedes2", "T200", 2017, "Германия", "белый", 120);
-        Bus bus2 = new Bus("Mersedes3", "T300", 2018, "Германия", "белый", 130);
+        printCarInfo(car1, car2, car3, car4);
+        System.out.println();
 
-        System.out.println(bus);
-        System.out.println(bus1);
-        System.out.println(bus2);
+        printBusInfo(bus1, bus2, bus3, bus4);
+        System.out.println();
+
+        printTruckInfo(truck1, truck2, truck3, truck4);
+        System.out.println();
+
+        car3.pitStop();
+        bus2.maxSpeed(110);
+        truck1.bestTime(53.6);
+        System.out.println();
 
     }
+
+    public static void printCarInfo (Car... car) {
+        for (Car cars : car) {
+            System.out.println(cars);
+        }
+    }
+    public static void printBusInfo (Bus... bus) {
+        for (Bus buses : bus) {
+            System.out.println(buses);
+        }
+    }
+    public static void printTruckInfo (Truck... truck) {
+        for (Truck trucks : truck) {
+            System.out.println(trucks);
+        }
+    }
+
 }

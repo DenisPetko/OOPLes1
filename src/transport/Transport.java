@@ -1,84 +1,75 @@
 package transport;
 
-public abstract class Transport {
-    private final String brand;
-    private final String model;
-    private final int year;
-    private final String country;
-    private String color;
-    protected int maxSpeed;
 
-    private static final String DEFAULT_VALUE = "default";
-    private static final int DEFAULT_SPEED_VALUE = 0;
-    private static final int DEFAULT_YEAR = 2000;
-    private static final String DEFAULT_COLOR = "белый";
+public abstract class Transport implements Competing {
 
-    public Transport(String brand, String model, int year, String country, String color, int maxSpeed) {
-        if (brand == null || brand.isEmpty()) {
-            this.brand = DEFAULT_VALUE;
-        } else {
-            this.brand = brand;
-        }
+    private String brand;
+    private String model;
+    private double engineVolume;
 
-        if (model == null || model.isEmpty()) {
-            this.model = DEFAULT_VALUE;
-        } else {
-            this.model = model;
-        }
+    public Transport(String brand, String model, double engineVolume) {
+        super();
+        this.brand = brand;
+        this.model = model;
+        this.engineVolume = engineVolume;
+    }
 
-        if (year <= 0) {
-            this.year = DEFAULT_YEAR;
-        } else {
-            this.year = year;
-        }
+    public void startMove() {
+        System.out.println(getBrand() + " " + getModel() + " - поехали");
+    }
 
-        if (country == null || country.isEmpty()) {
-            this.country = DEFAULT_VALUE;
-        } else {
-            this.country = country;
-        }
+    public void stopMove() {
+        System.out.println(getBrand() + " " + getModel() + " - стоп");
+    }
 
-        setColor(color);
-        setMaxSpeed(maxSpeed);
+    @Override
+    public void pitStop() {
+        System.out.println(getBrand() + " " + getModel() + " - на питстоп");
+    }
+
+    @Override
+    public void bestTime(double bestTime) {
+        System.out.println(getBrand() + " " + getModel() + " - Лучшее время круга: " + bestTime);
+    }
+
+    @Override
+    public void maxSpeed(int maxSpeed) {
+        System.out.println(getBrand() + " " + getModel() + " - Максимальная скорость: " + maxSpeed);
     }
 
     public String getBrand() {
         return brand;
     }
 
+    public void setBrand(String brand) {
+        if (brand == null || brand.isEmpty()) {
+            this.brand = "нет информаии";
+        } else {
+            this.brand = brand;
+        }
+    }
+
     public String getModel() {
         return model;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        if (color == null || color.isEmpty()) {
-            this.color = DEFAULT_COLOR;
+    public void setModel(String model) {
+        if (model == null || model.isEmpty()) {
+            this.model = "нет информаии";
         } else {
-            this.color = color;
+            this.model = model;
         }
     }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public void setMaxSpeed(int maxSpeed) {
-        if (maxSpeed < 0) {
-            this.maxSpeed = DEFAULT_SPEED_VALUE;
+    public void setEngineVolume(double engineVolume) {
+        if (engineVolume < 0) {
+            this.engineVolume = 0;
         } else {
-            this.maxSpeed = maxSpeed;
+            this.engineVolume = engineVolume;
         }
     }
 
@@ -87,10 +78,7 @@ public abstract class Transport {
         return "Transport{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
-                ", year=" + year +
-                ", country='" + country + '\'' +
-                ", color='" + color + '\'' +
-                ", maxSpeed=" + maxSpeed +
+                ", engineVolume=" + engineVolume +
                 '}';
     }
 }

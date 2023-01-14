@@ -1,10 +1,10 @@
 package transport;
 
-public class Bus extends Transport {
-    public Bus(String brand, String model, int year, String country,
-               String color, int maxSpeed) {
-        super(brand, model, year, country, color, maxSpeed);
-    }
 
-//    public void printInfo;
+public class Bus extends Transport {
+
+    public Bus(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+    }
 }
+
