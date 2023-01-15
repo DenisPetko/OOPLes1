@@ -2,12 +2,53 @@ package transport;
 
 
 import Drivers.CategoryB;
-import Drivers.Driver;
 
 public class Car extends Transport<CategoryB> {
 
+    public enum TypeCarCase {
+
+        SEDAN("Седан"), HETCH("Хетчбек"), CUPE("Купе"),
+        UNIVERSAL("Универсал"), OFFROAD("Внедорожник"),
+        CROSS("Кроссовер"), PIKAP("Пикап"),
+        FURGON("Фургон"), MINIVEN("Минивэн");
+
+        private final String russianName;
+
+        TypeCarCase(String russianName) {
+            this.russianName = russianName;
+        }
+
+        public String getRussianName() {
+            return russianName;
+        }
+
+        @Override
+        public String toString() {
+            return "Тип кузова: " + russianName;
+        }
+    }
+
+    TypeCarCase typeCarCase = TypeCarCase.SEDAN;
+
+    public TypeCarCase getTypeCarCase() {
+        return typeCarCase;
+    }
+
+    public void setTypeCarCase(TypeCarCase typeCarCase) {
+        this.typeCarCase = typeCarCase;
+    }
+
     public Car(String brand, String model, double engineVolume, CategoryB CategoryB) {
         super(brand, model, engineVolume, CategoryB);
+    }
+
+    @Override
+    public void printType() {
+        if (typeCarCase == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println(typeCarCase);
+        }
     }
 
     @Override

@@ -63,6 +63,8 @@ public abstract class Transport<T extends Driver> implements Competing {
         return driver;
     }
 
+    public abstract void printType();
+
     @Override
     public String toString() {
         return "Transport{" +
@@ -71,4 +73,5 @@ public abstract class Transport<T extends Driver> implements Competing {
                 ", engineVolume=" + engineVolume +
                 '}';
     }
+
 }

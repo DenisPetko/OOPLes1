@@ -40,8 +40,6 @@ public class Main {
         Truck truck4 = new Truck("Грузовик4", "Модель4", 8.0, driver8);
 
 
-
-
         printCarInfo(car1, car2, car3, car4);
         System.out.println();
 
