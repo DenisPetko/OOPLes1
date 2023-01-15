@@ -58,6 +58,11 @@ public class Main {
         printInfoDriver(bus2);
         printInfoDriver(truck3);
 
+        System.out.println();
+        bus2.printType();
+        truck1.printType();
+        car3.printType();
+
     }
 
     public static void printCarInfo(Car... car) {
@@ -83,5 +88,6 @@ public class Main {
                 + " управляет автомобилем " + transport.getBrand() + " "
                 + transport.getModel() + " и будет участвовать в гонке");
     }
+
 
 }

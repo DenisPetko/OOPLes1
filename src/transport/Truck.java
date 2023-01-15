@@ -7,7 +7,7 @@ public class Truck extends Transport<CategoryC> {
 
     public enum Capacity {
 
-        N1(null,3.5f), N2(3.5f,12f), N3(12f, null);
+        N1(null, 3.5f), N2(3.5f, 12f), N3(12f, null);
 
         private final Float minCapacity;
         private final Float maxCapacity;
@@ -27,10 +27,10 @@ public class Truck extends Transport<CategoryC> {
 
         @Override
         public String toString() {
-            if (minCapacity == Float.parseFloat(null)) {
+            if (minCapacity == null) {
                 return "Грузоподъемность: до " + maxCapacity + " тонн";
             }
-            if (maxCapacity == Float.parseFloat(null)) {
+            if (maxCapacity == null) {
                 return "Грузоподъемность: свыше " + minCapacity + " тонн";
             }
             return "Грузоподъемность: от " + minCapacity + " до " + maxCapacity + " тонн";
