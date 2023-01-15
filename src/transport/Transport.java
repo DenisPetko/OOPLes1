@@ -1,17 +1,18 @@
 package transport;
+import Drivers.Driver;
 
-
-public abstract class Transport implements Competing {
+public abstract class Transport<T extends Driver> implements Competing {
 
     private String brand;
     private String model;
     private double engineVolume;
+    private final T driver;
 
-    public Transport(String brand, String model, double engineVolume) {
-        super();
+    public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = brand;
         this.model = model;
         this.engineVolume = engineVolume;
+        this.driver = driver;
     }
 
     public void startMove() {
@@ -20,21 +21,6 @@ public abstract class Transport implements Competing {
 
     public void stopMove() {
         System.out.println(getBrand() + " " + getModel() + " - стоп");
-    }
-
-    @Override
-    public void pitStop() {
-        System.out.println(getBrand() + " " + getModel() + " - на питстоп");
-    }
-
-    @Override
-    public void bestTime(double bestTime) {
-        System.out.println(getBrand() + " " + getModel() + " - Лучшее время круга: " + bestTime);
-    }
-
-    @Override
-    public void maxSpeed(int maxSpeed) {
-        System.out.println(getBrand() + " " + getModel() + " - Максимальная скорость: " + maxSpeed);
     }
 
     public String getBrand() {
@@ -71,6 +57,10 @@ public abstract class Transport implements Competing {
         } else {
             this.engineVolume = engineVolume;
         }
+    }
+
+    public T getDriver() {
+        return driver;
     }
 
     @Override
