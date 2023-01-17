@@ -62,6 +62,11 @@ public class Truck extends Transport<CategoryC> {
     }
 
     @Override
+    public boolean goService() {
+        return true;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("грузовик " + getBrand() + " " + getModel() + " - на питстоп");
     }

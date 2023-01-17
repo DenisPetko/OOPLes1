@@ -66,6 +66,8 @@ public abstract class Transport<T extends Driver> implements Competing {
 
     public abstract void printType();
 
+    public abstract boolean goService();
+
     @Override
     public String toString() {
         return "Transport{" +

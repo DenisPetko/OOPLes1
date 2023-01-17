@@ -1,7 +1,11 @@
 package Drivers;
 
 
-public abstract class Driver {
+import jdk.jfr.Category;
+
+import java.util.Locale;
+
+public class Driver{
 
     private String fullName;
     private boolean haveDriveLicence;

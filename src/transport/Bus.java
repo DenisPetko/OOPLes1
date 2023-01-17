@@ -57,6 +57,11 @@ public class Bus extends Transport<CategoryD> {
         }
     }
 
+    @Override
+    public boolean goService() {
+        return false;
+    }
+
     public Bus(String brand, String model, double engineVolume, CategoryD CategoryD) {
         super(brand, model, engineVolume, CategoryD);
     }

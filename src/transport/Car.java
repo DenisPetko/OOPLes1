@@ -52,6 +52,11 @@ public class Car extends Transport<CategoryB> {
     }
 
     @Override
+    public boolean goService() {
+        return true;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("атвомобиль " + getBrand() + " " + getModel() + " - на питстоп");
     }
