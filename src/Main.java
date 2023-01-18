@@ -1,13 +1,22 @@
 import Drivers.CategoryB;
 import Drivers.CategoryC;
 import Drivers.CategoryD;
+import Drivers.Driver;
 import transport.Bus;
 import transport.Car;
 import transport.Transport;
 import transport.Truck;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
+
+        Driver driverB = new Driver("Иванов Иван", true, 2, "D");
+        System.out.println(driverB);
+        Driver driverC = new Driver("семен семеныч", true, 6, "E");
+        System.out.println(driverC);
+        System.out.println();
 
         CategoryB driver1 = new CategoryB("Водитель1", true, 1);
         CategoryB driver2 = new CategoryB("Водитель2", true, 1);

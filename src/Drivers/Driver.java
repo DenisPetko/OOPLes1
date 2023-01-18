@@ -1,20 +1,34 @@
 package Drivers;
 
 
-import jdk.jfr.Category;
-
-import java.util.Locale;
-
-public class Driver{
+public class Driver {
 
     private String fullName;
     private boolean haveDriveLicence;
     private int drivingExperience;
+    private String category;
 
-    public Driver(String fullName, boolean haveDriveLicence, int drivingExperience) {
+    public Driver(String fullName, boolean haveDriveLicence, int drivingExperience, String category) {
         this.fullName = fullName;
         this.haveDriveLicence = haveDriveLicence;
         this.drivingExperience = drivingExperience;
+        try {
+            setCategory(category);
+        } catch (CheckCategory e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) throws CheckCategory{
+        if (category.equals("B") || category.equals("C") || category.equals("D")) {
+            this.category = category;
+        } else {
+            throw new CheckCategory("Необходимо указать тип прав!");
+        }
     }
 
     public void startMove() {
@@ -59,5 +73,15 @@ public class Driver{
         } else {
             this.drivingExperience = drivingExperience;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "fullName='" + fullName + '\'' +
+                ", haveDriveLicence=" + haveDriveLicence +
+                ", drivingExperience=" + drivingExperience +
+                ", category='" + category + '\'' +
+                '}';
     }
 }
