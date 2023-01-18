@@ -61,7 +61,7 @@ public class Main {
                 driver10, driver11, driver12
         );
 
-        service(car1);
+        service(car1); //почему тру возвращает?
 
         System.out.println(transports);
         System.out.println(drivers);
