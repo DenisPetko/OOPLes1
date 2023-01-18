@@ -8,15 +8,16 @@ import transport.Transport;
 import transport.Truck;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        Driver driverB = new Driver("Иванов Иван", true, 2, "D");
-        System.out.println(driverB);
-        Driver driverC = new Driver("семен семеныч", true, 6, "E");
-        System.out.println(driverC);
-        System.out.println();
+//        Driver driverB = new Driver("Иванов Иван", true, 2, "D");
+//        System.out.println(driverB);
+//        Driver driverC = new Driver("семен семеныч", true, 6, "E");
+//        System.out.println(driverC);
+//        System.out.println();
 
         CategoryB driver1 = new CategoryB("Водитель1", true, 1);
         CategoryB driver2 = new CategoryB("Водитель2", true, 1);
@@ -48,29 +49,47 @@ public class Main {
         Truck truck3 = new Truck("Грузовик3", "Модель3", 8.0, driver7);
         Truck truck4 = new Truck("Грузовик4", "Модель4", 8.0, driver8);
 
+        List<Transport> transports = List.of(
+                car1, car2, car3, car4,
+                bus1, bus2, bus3, bus4,
+                truck1, truck2, truck3, truck4
+        );
+        List<Driver> drivers = List.of(
+                driver1, driver2, driver3,
+                driver4, driver5, driver6,
+                driver7, driver8, driver9,
+                driver10, driver11, driver12
+        );
 
-        printCarInfo(car1, car2, car3, car4);
-        System.out.println();
+        service(car1);
 
-        printBusInfo(bus1, bus2, bus3, bus4);
-        System.out.println();
+        System.out.println(transports);
+        System.out.println(drivers);
 
-        printTruckInfo(truck1, truck2, truck3, truck4);
-        System.out.println();
 
-        car3.pitStop();
-        bus2.maxSpeed(110);
-        truck1.bestTime(53.6);
-        System.out.println();
+//        printCarInfo(car1, car2, car3, car4);
+//        System.out.println();
+//
+//        printBusInfo(bus1, bus2, bus3, bus4);
+//        System.out.println();
+//
+//        printTruckInfo(truck1, truck2, truck3, truck4);
+//        System.out.println();
+//
+//        car3.pitStop();
+//        bus2.maxSpeed(110);
+//        truck1.bestTime(53.6);
+//        System.out.println();
+//
+//        printInfoDriver(car1);
+//        printInfoDriver(bus2);
+//        printInfoDriver(truck3);
+//
+//        System.out.println();
+//        bus2.printType();
+//        truck1.printType();
+//        car3.printType();
 
-        printInfoDriver(car1);
-        printInfoDriver(bus2);
-        printInfoDriver(truck3);
-
-        System.out.println();
-        bus2.printType();
-        truck1.printType();
-        car3.printType();
 
     }
 
@@ -98,5 +117,8 @@ public class Main {
                 + transport.getModel() + " и будет участвовать в гонке");
     }
 
+    public static void service(Transport transport) {
+        System.out.println(transport.goService());
+    }
 
 }

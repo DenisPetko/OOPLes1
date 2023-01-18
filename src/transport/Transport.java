@@ -2,18 +2,31 @@ package transport;
 
 import Drivers.Driver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport<T extends Driver> implements Competing {
 
     private String brand;
     private String model;
     private double engineVolume;
     private final T driver;
+    private List<Driver<?>> drivers = new ArrayList<>(); // надо перенастроить дженерики??
+    private List<Mec>;// почему не видит механиков ??
+
 
     public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = brand;
         this.model = model;
         this.engineVolume = engineVolume;
         this.driver = driver;
+    }
+
+    public void addDriver(Driver<?> driver) {  // надо перенастроить дженерики??
+
+    }
+    public void addMechanic(Mechanic<?> mechanic) {    // почему не видит механиков ??
+
     }
 
     public void startMove() {
