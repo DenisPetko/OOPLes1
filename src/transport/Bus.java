@@ -38,7 +38,7 @@ public class Bus extends Transport<CategoryD> {
 
     }
 
-    CapacityBus capacityBus = CapacityBus.VERY_BIG;
+    private CapacityBus capacityBus = CapacityBus.VERY_BIG;
 
     public CapacityBus getCapacityBus() {
         return capacityBus;
@@ -55,11 +55,6 @@ public class Bus extends Transport<CategoryD> {
         } else {
             System.out.println(capacityBus);
         }
-    }
-
-    @Override
-    public boolean goService() {
-        return false;
     }
 
     public Bus(String brand, String model, double engineVolume, CategoryD CategoryD) {

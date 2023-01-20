@@ -1,8 +1,7 @@
-import transport.Transport;
+package transport;
 
-import java.util.LinkedList;
+public class Mechanic<T extends Transport> { //Raw use of parameterized class 'Transport' ?? - это можно игнорировать?
 
-public class Mechanic <T extends Transport> {
     private String name;
     private String company;
 
@@ -11,12 +10,13 @@ public class Mechanic <T extends Transport> {
         this.company = company;
     }
 
-    public void service(T transport) {
-        System.out.println(transport.getBrand() + transport.getModel() +
+    public void goService(T transport) {
+        System.out.println(transport.getBrand() + " " + transport.getModel() +
                 " на тех обслуживании у механика: " + name + " компания: " + company);
     }
+
     public void repair(T transport) {
-        System.out.println(transport.getBrand() + transport.getModel() +
+        System.out.println(transport.getBrand() + " " + transport.getModel() +
                 " на ремонте у механика: " + name + " компания: " + company);
     }
 
@@ -36,4 +36,11 @@ public class Mechanic <T extends Transport> {
         this.company = company;
     }
 
+    @Override
+    public String toString() {
+        return "Mechanic{" +
+                "name='" + name + '\'' +
+                ", company='" + company + '\'' +
+                '}';
+    }
 }

@@ -38,7 +38,7 @@ public class Truck extends Transport<CategoryC> {
 
     }
 
-    Capacity capacity = Capacity.N1;
+    private Capacity capacity = Capacity.N1;
 
     public Capacity getCapacity() {
         return capacity;
@@ -59,11 +59,6 @@ public class Truck extends Transport<CategoryC> {
         } else {
             System.out.println(capacity);
         }
-    }
-
-    @Override
-    public boolean goService() {
-        return true;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package Drivers;
 
-
 public class Driver {
 
     private String fullName;

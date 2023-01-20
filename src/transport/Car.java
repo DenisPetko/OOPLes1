@@ -28,7 +28,7 @@ public class Car extends Transport<CategoryB> {
         }
     }
 
-    TypeCarCase typeCarCase = TypeCarCase.SEDAN;
+    private TypeCarCase typeCarCase = TypeCarCase.SEDAN;
 
     public TypeCarCase getTypeCarCase() {
         return typeCarCase;
@@ -52,11 +52,6 @@ public class Car extends Transport<CategoryB> {
     }
 
     @Override
-    public boolean goService() {
-        return true;
-    }
-
-    @Override
     public void pitStop() {
         System.out.println("атвомобиль " + getBrand() + " " + getModel() + " - на питстоп");
     }
@@ -70,6 +65,7 @@ public class Car extends Transport<CategoryB> {
     public void maxSpeed(int maxSpeed) {
         System.out.println("атвомобиль " + getBrand() + " " + getModel() + " - Максимальная скорость: " + maxSpeed);
     }
+
 
 }
 

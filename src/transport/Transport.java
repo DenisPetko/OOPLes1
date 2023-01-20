@@ -1,8 +1,7 @@
 package transport;
-
 import Drivers.Driver;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class Transport<T extends Driver> implements Competing {
@@ -11,8 +10,8 @@ public abstract class Transport<T extends Driver> implements Competing {
     private String model;
     private double engineVolume;
     private final T driver;
-    private List<Driver<?>> drivers = new ArrayList<>(); // надо перенастроить дженерики??
-    private List<Mec>;// почему не видит механиков ??
+    private List<Driver> drivers = new ArrayList<>();
+    private List<Mechanic<?>> mechanics = new ArrayList<>();
 
 
     public Transport(String brand, String model, double engineVolume, T driver) {
@@ -22,11 +21,12 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.driver = driver;
     }
 
-    public void addDriver(Driver<?> driver) {  // надо перенастроить дженерики??
-
+    public void addDriver(Driver... driver) {
+        this.drivers.addAll(Arrays.asList(driver));
     }
-    public void addMechanic(Mechanic<?> mechanic) {    // почему не видит механиков ??
 
+    public void addMechanic(Mechanic<?>... mechanic) {
+        this.mechanics.addAll(Arrays.asList(mechanic));
     }
 
     public void startMove() {
@@ -73,13 +73,31 @@ public abstract class Transport<T extends Driver> implements Competing {
         }
     }
 
-    public T getDriver() {
-        return driver;
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
     }
+
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+
+//    public T getDriver() {
+//        return driver;
+//    }
+
+//    public T getMechanics() {
+//        return mechanics;
+//    }
 
     public abstract void printType();
 
-    public abstract boolean goService();
+    public void goService() {
+        System.out.println(getBrand() + " " + getModel() + " на ТО");
+    }
+
+    public void repair() {
+        System.out.println(getBrand() + " " + getModel() + " на ремонте");
+    }
 
     @Override
     public String toString() {

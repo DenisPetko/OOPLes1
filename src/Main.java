@@ -2,37 +2,33 @@ import Drivers.CategoryB;
 import Drivers.CategoryC;
 import Drivers.CategoryD;
 import Drivers.Driver;
-import transport.Bus;
-import transport.Car;
-import transport.Transport;
-import transport.Truck;
-
-import java.util.Arrays;
+import transport.*;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-//        Driver driverB = new Driver("Иванов Иван", true, 2, "D");
+//        Driver driverB = new Driver("Иванов Иван", true, 2, "B");
 //        System.out.println(driverB);
-//        Driver driverC = new Driver("семен семеныч", true, 6, "E");
+//        Driver driverC = new Driver("семен семеныч", true, 6, "M");
 //        System.out.println(driverC);
-//        System.out.println();
+//        Driver driverD = new Driver("Петров Петр", true, 4, "D");
+//        System.out.println(driverD);
 
-        CategoryB driver1 = new CategoryB("Водитель1", true, 1);
-        CategoryB driver2 = new CategoryB("Водитель2", true, 1);
-        CategoryB driver3 = new CategoryB("Водитель3", true, 1);
-        CategoryB driver4 = new CategoryB("Водитель4", true, 1);
+        CategoryB driver1 = new CategoryB("Водитель1", true, 1, "E");
+        CategoryB driver2 = new CategoryB("Водитель2", true, 1, "B");
+        CategoryB driver3 = new CategoryB("Водитель3", true, 1, "B");
+        CategoryB driver4 = new CategoryB("Водитель4", true, 1, "B");
 
-        CategoryC driver5 = new CategoryC("Водитель5", true, 1);
-        CategoryC driver6 = new CategoryC("Водитель6", true, 1);
-        CategoryC driver7 = new CategoryC("Водитель7", true, 1);
-        CategoryC driver8 = new CategoryC("Водитель8", true, 1);
+        CategoryC driver5 = new CategoryC("Водитель5", true, 1, "C");
+        CategoryC driver6 = new CategoryC("Водитель6", true, 1, "C");
+        CategoryC driver7 = new CategoryC("Водитель7", true, 1, "C");
+        CategoryC driver8 = new CategoryC("Водитель8", true, 1, "C");
 
-        CategoryD driver9 = new CategoryD("Водитель9", true, 1);
-        CategoryD driver10 = new CategoryD("Водитель10", true, 1);
-        CategoryD driver11 = new CategoryD("Водитель11", true, 1);
-        CategoryD driver12 = new CategoryD("Водитель12", true, 1);
+        CategoryD driver9 = new CategoryD("Водитель9", true, 1, "D");
+        CategoryD driver10 = new CategoryD("Водитель10", true, 1, "D");
+        CategoryD driver11 = new CategoryD("Водитель11", true, 1, "D");
+        CategoryD driver12 = new CategoryD("Водитель12", true, 1, "D");
 
         Car car1 = new Car("FORD", "focus", 2.0, driver1);
         Car car2 = new Car("BMW", "520", 3.0, driver2);
@@ -49,7 +45,23 @@ public class Main {
         Truck truck3 = new Truck("Грузовик3", "Модель3", 8.0, driver7);
         Truck truck4 = new Truck("Грузовик4", "Модель4", 8.0, driver8);
 
-        List<Transport> transports = List.of(
+        Mechanic<Transport> mechanic1 = new Mechanic<>("Механик машины;", "CarService");
+        Mechanic<Bus> mechanic2 = new Mechanic<>("Механик автобуса;", "BusService");
+        Mechanic<Truck> mechanic3 = new Mechanic<>("Механик грузовика;", "TruckService");
+
+        car1.addMechanic(mechanic1, mechanic2);
+        car1.addDriver(driver1, driver2, driver3);
+        System.out.println(car1.getDrivers());
+        System.out.println(car1.getMechanics());
+
+        bus2.addMechanic(mechanic2);
+        bus2.addDriver(driver4);
+
+        truck3.addMechanic(mechanic3);
+        truck3.addDriver(driver9);
+
+        System.out.println();
+        List<Transport> transports = List.of(  //Raw use of parameterized class 'Transport' ?? - это можно игнорировать??
                 car1, car2, car3, car4,
                 bus1, bus2, bus3, bus4,
                 truck1, truck2, truck3, truck4
@@ -61,11 +73,19 @@ public class Main {
                 driver10, driver11, driver12
         );
 
-        service(car1); //почему тру возвращает?
+        List<Mechanic> mechanics = List.of(  //Raw use of parameterized class 'Transport' ?? - это можно игнорировать?
+                mechanic1, mechanic2, mechanic3
+        );
 
         System.out.println(transports);
         System.out.println(drivers);
+        System.out.println(mechanics);
+        System.out.println();
 
+        car1.goService();
+        truck2.repair();
+        mechanic3.goService(truck1);
+        mechanic1.repair(car2);
 
 //        printCarInfo(car1, car2, car3, car4);
 //        System.out.println();
@@ -89,8 +109,6 @@ public class Main {
 //        bus2.printType();
 //        truck1.printType();
 //        car3.printType();
-
-
     }
 
     public static void printCarInfo(Car... car) {
@@ -111,14 +129,14 @@ public class Main {
         }
     }
 
-    public static void printInfoDriver(Transport<?> transport) {
-        System.out.println("водитель " + transport.getDriver().getFullName()
-                + " управляет автомобилем " + transport.getBrand() + " "
-                + transport.getModel() + " и будет участвовать в гонке");
-    }
+//    public static void printInfoDriver(Transport<?> transport) {
+//        System.out.println("водитель " + transport.getDrivers().getFullName()
+//                + " управляет автомобилем " + transport.getBrand() + " "
+//                + transport.getModel() + " и будет участвовать в гонке");
+//    }
 
-    public static void service(Transport transport) {
-        System.out.println(transport.goService());
-    }
+//    public static void goService(Transport<?> transport) {
+//        System.out.println(Transport<Car>.car1);
+//    }
 
 }

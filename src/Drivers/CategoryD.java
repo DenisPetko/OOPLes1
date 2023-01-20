@@ -1,11 +1,8 @@
 package Drivers;
 
-
 public class CategoryD extends Driver {
 
-    private static final String category = "D";
-
-    public CategoryD(String fullName, boolean haveDriveLicence, int drivingExperience) {
+    public CategoryD(String fullName, boolean haveDriveLicence, int drivingExperience, String category) {
         super(fullName, haveDriveLicence, drivingExperience, category);
     }
 
