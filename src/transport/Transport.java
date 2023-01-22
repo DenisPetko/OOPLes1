@@ -3,6 +3,7 @@ import Drivers.Driver;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Transport<T extends Driver> implements Competing {
 
@@ -101,11 +102,19 @@ public abstract class Transport<T extends Driver> implements Competing {
 
     @Override
     public String toString() {
-        return "Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineVolume=" + engineVolume +
-                '}';
+        return "Транспорт: " + brand + " " + model;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && Objects.equals(brand, transport.brand) && Objects.equals(model, transport.model) && Objects.equals(driver, transport.driver) && Objects.equals(drivers, transport.drivers) && Objects.equals(mechanics, transport.mechanics);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume, driver, drivers, mechanics);
+    }
 }

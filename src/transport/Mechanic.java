@@ -1,6 +1,8 @@
 package transport;
 
-public class Mechanic<T extends Transport> { //Raw use of parameterized class 'Transport' ?? - это можно игнорировать?
+import java.util.Objects;
+
+public class Mechanic<T extends Transport<?>> { //Raw use of parameterized class 'Transport' ?? - это можно игнорировать?
 
     private String name;
     private String company;
@@ -38,9 +40,19 @@ public class Mechanic<T extends Transport> { //Raw use of parameterized class 'T
 
     @Override
     public String toString() {
-        return "Mechanic{" +
-                "name='" + name + '\'' +
-                ", company='" + company + '\'' +
-                '}';
+        return "Механик: " + name + " " + company;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return Objects.equals(name, mechanic.name) && Objects.equals(company, mechanic.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, company);
     }
 }

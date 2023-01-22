@@ -3,17 +3,13 @@ import Drivers.CategoryC;
 import Drivers.CategoryD;
 import Drivers.Driver;
 import transport.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-
-//        Driver driverB = new Driver("Иванов Иван", true, 2, "B");
-//        System.out.println(driverB);
-//        Driver driverC = new Driver("семен семеныч", true, 6, "M");
-//        System.out.println(driverC);
-//        Driver driverD = new Driver("Петров Петр", true, 4, "D");
-//        System.out.println(driverD);
 
         CategoryB driver1 = new CategoryB("Водитель1", true, 1, "E");
         CategoryB driver2 = new CategoryB("Водитель2", true, 1, "B");
@@ -45,27 +41,29 @@ public class Main {
         Truck truck3 = new Truck("Грузовик3", "Модель3", 8.0, driver7);
         Truck truck4 = new Truck("Грузовик4", "Модель4", 8.0, driver8);
 
-        Mechanic<Transport> mechanic1 = new Mechanic<>("Механик машины;", "CarService");
-        Mechanic<Bus> mechanic2 = new Mechanic<>("Механик автобуса;", "BusService");
-        Mechanic<Truck> mechanic3 = new Mechanic<>("Механик грузовика;", "TruckService");
+        Mechanic<Transport<?>> mechanic1 = new Mechanic<>("Механик 1", "CarService");
+        Mechanic<Bus> mechanic2 = new Mechanic<>("Механик 2", "BusService");
+        Mechanic<Truck> mechanic3 = new Mechanic<>("Механик 3", "TruckService");
 
         car1.addMechanic(mechanic1, mechanic2);
         car1.addDriver(driver1, driver2, driver3);
+
         System.out.println(car1.getDrivers());
         System.out.println(car1.getMechanics());
 
-        bus2.addMechanic(mechanic2);
-        bus2.addDriver(driver4);
+//        bus2.addMechanic(mechanic2);
+//        bus2.addDriver(driver4);
 
         truck3.addMechanic(mechanic3);
         truck3.addDriver(driver9);
 
         System.out.println();
-        List<Transport> transports = List.of(  //Raw use of parameterized class 'Transport' ?? - это можно игнорировать??
+        List<Transport<?>> transports = List.of(
                 car1, car2, car3, car4,
                 bus1, bus2, bus3, bus4,
                 truck1, truck2, truck3, truck4
         );
+
         List<Driver> drivers = List.of(
                 driver1, driver2, driver3,
                 driver4, driver5, driver6,
@@ -73,7 +71,7 @@ public class Main {
                 driver10, driver11, driver12
         );
 
-        List<Mechanic> mechanics = List.of(  //Raw use of parameterized class 'Transport' ?? - это можно игнорировать?
+        List<Mechanic<?>> mechanics = List.of(
                 mechanic1, mechanic2, mechanic3
         );
 
@@ -86,29 +84,22 @@ public class Main {
         truck2.repair();
         mechanic3.goService(truck1);
         mechanic1.repair(car2);
+        System.out.println();
 
-//        printCarInfo(car1, car2, car3, car4);
-//        System.out.println();
-//
-//        printBusInfo(bus1, bus2, bus3, bus4);
-//        System.out.println();
-//
-//        printTruckInfo(truck1, truck2, truck3, truck4);
-//        System.out.println();
-//
-//        car3.pitStop();
-//        bus2.maxSpeed(110);
-//        truck1.bestTime(53.6);
-//        System.out.println();
-//
-//        printInfoDriver(car1);
-//        printInfoDriver(bus2);
-//        printInfoDriver(truck3);
-//
-//        System.out.println();
-//        bus2.printType();
-//        truck1.printType();
-//        car3.printType();
+        Map<Transport<?>, Mechanic<?>> mechanicMap = new HashMap<>();
+        mechanicMap.put(car1, mechanic1);
+        mechanicMap.put(car2, mechanic2);
+        mechanicMap.put(car2, mechanic2);
+        mechanicMap.put(car3, mechanic3);
+        mechanicMap.put(truck1, mechanic1);
+        mechanicMap.put(truck2, mechanic2);
+
+        System.out.println(mechanicMap);
+
+
+
+
+
     }
 
     public static void printCarInfo(Car... car) {
@@ -128,15 +119,5 @@ public class Main {
             System.out.println(trucks);
         }
     }
-
-//    public static void printInfoDriver(Transport<?> transport) {
-//        System.out.println("водитель " + transport.getDrivers().getFullName()
-//                + " управляет автомобилем " + transport.getBrand() + " "
-//                + transport.getModel() + " и будет участвовать в гонке");
-//    }
-
-//    public static void goService(Transport<?> transport) {
-//        System.out.println(Transport<Car>.car1);
-//    }
 
 }
