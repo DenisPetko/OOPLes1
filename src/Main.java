@@ -4,9 +4,7 @@ import Drivers.CategoryD;
 import Drivers.Driver;
 import transport.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -96,6 +94,13 @@ public class Main {
 
         System.out.println(mechanicMap);
 
+        Set<Driver> driverSet = new HashSet<>();
+        driverSet.add(driver1);
+        driverSet.add(driver1);
+        driverSet.add(driver2);
+        driverSet.add(driver3);
+
+        System.out.println(driverSet);
 
 
 

@@ -76,11 +76,6 @@ public class Driver {
 
     @Override
     public String toString() {
-        return "Driver{" +
-                "fullName='" + fullName + '\'' +
-                ", haveDriveLicence=" + haveDriveLicence +
-                ", drivingExperience=" + drivingExperience +
-                ", category='" + category + '\'' +
-                '}';
+        return "Водитель: " + fullName + " category= " + category;
     }
 }

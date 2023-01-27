@@ -7,8 +7,10 @@ public class Car extends Transport<CategoryB> {
 
     public enum TypeCarCase {
 
-        SEDAN("Седан"), HETCH("Хетчбек"), CUPE("Купе"),
-        UNIVERSAL("Универсал"), OFFROAD("Внедорожник"),
+        SEDAN("Седан"), HETCH("Хетчбек"),
+        CUPE("Купе"),
+        UNIVERSAL("Универсал"),
+        OFFROAD("Внедорожник"),
         CROSS("Кроссовер"), PIKAP("Пикап"),
         FURGON("Фургон"), MINIVEN("Минивэн");
 
